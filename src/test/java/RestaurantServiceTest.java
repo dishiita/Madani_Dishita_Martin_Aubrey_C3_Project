@@ -59,4 +59,31 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void select_items_from_menu_and_total_cost_should_be_the_sum_of_cost_of_individual_items(){
+        //Adding items to the order list
+        List<String> order = new ArrayList<String>();
+        order.add("Sweet corn soup");
+        order.add("Vegetable lasagne");
+
+        //Placing the order and getting the order cost
+        int totalCost = restaurant.getTotalCost(order);
+
+        //Assertion
+        assertEquals(388,totalCost);
+    }
+
+    @Test
+    public void when_no_item_is_selected_from_menu_and_total_cost_should_be_zero(){
+        //Creating empty order list
+        List<String> order = new ArrayList<String>();
+
+        //Placing the order and getting the order cost
+        int totalCost = restaurant.getTotalCost(order);
+
+        //Assertion
+        assertEquals(0,totalCost);
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<CALCULATE TOTAL COST>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
