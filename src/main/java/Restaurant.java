@@ -18,7 +18,7 @@ public class Restaurant {
     }
 
     public boolean isRestaurantOpen() {
-        LocalTime currentTime = getCurrentTime();
+        LocalTime currentTime =  getCurrentTime();
         return currentTime.isAfter(openingTime) && currentTime.isBefore(closingTime);
     }
 
@@ -64,6 +64,10 @@ public class Restaurant {
     }
 
     public int getTotalCost() {
-        return -1;
+        int totalCost = 0;
+        for (Item item: menu) {
+            totalCost += item.getPrice();
+        }
+        return totalCost;
     }
 }
